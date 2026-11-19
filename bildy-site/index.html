@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilby — короткометражный фильм</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Навигация -->
+    <header class="navbar">
+        <div class="logo">BILBY</div>
+        <nav>
+            <a href="#hero" class="active">Главная</a>
+            <a href="#author">Об авторе</a>
+            <a href="#video">Видео</a>
+            <a href="#characters">Герои</a>
+            <a href="#game">Игра</a>
+            <a href="#feedback">Мнение</a>
+        </nav>
+    </header>
+
+    <!-- СЕКЦИЯ 1: ГЛАВНАЯ -->
+    <section id="hero" class="hero-section">
+        <div class="stars-container"></div>
+        <div class="hero-content">
+            <p class="subtitle">[Короткометражный фильм]</p>
+            <h1 class="main-title">BILBY</h1>
+            <p class="description">
+                История о маленьком и пугливом зверьке билби по имени Пизл, 
+                который живет в суровой австралийской пустыне и пытается 
+                защитить беспомощного птенца от опасностей дикой природы.
+            </p>
+            <!-- Кнопка теперь имеет id для JS -->
+            <button id="watchFilmBtn" class="btn-primary">Смотреть фильм</button>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number">365</span>
+                    <span class="stat-label">Дней в пустыне</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">1</span>
+                    <span class="stat-label">Маленький герой</span>
+                </div>
+            </div>
+        </div>
+        <div class="floating-object">
+            <div class="object-glow"></div>
+            <div class="object-shape"></div>
+        </div>
+    </section>
+
+    <!-- СЕКЦИЯ 2: ОБ АВТОРЕ -->
+    <section id="author" class="content-section hidden">
+        <div class="container">
+            <p class="section-subtitle">[Режиссёр и создатель]</p>
+            <h2 class="section-title">О ЧЁМ ЭТОТ ФИЛЬМ?</h2>
+            <div class="author-layout">
+                <div class="author-text-main">
+                    <p class="lead-text">
+                        «Bilby» — это не просто история о выживании в пустыне. Это метафора о том, 
+                        как даже самое маленькое и пугливое существо способно на огромную любовь и самопожертвование.
+                    </p>
+                    <p>
+                        Я создал Пизла, чтобы показать: настоящая сила не в размерах или острых клыках. 
+                        Настоящая сила — в желании защитить того, кто слабее. Птенец в этой истории — 
+                        это не просто птенец. Это всё хрупкое и дорогое, что мы боимся потерять в суровом мире.
+                    </p>
+                    <p>
+                        Австралийская пустыня здесь выступает как безжалостный антагонист. Она проверяет 
+                        героев на прочность каждый день. Но именно в этих суровых условиях, среди песка и 
+                        колючек, рождается настоящая привязанность и тепло.
+                    </p>
+                </div>
+                <div class="author-sidebar">
+                    <div class="quote-box">
+                        <p>«Даже самый маленький зверёк может стать чьим-то целым миром».</p>
+                        <span class="quote-author">— Автор фильма</span>
+                    </div>
+                    <div class="themes-list">
+                        <h3>Главные темы:</h3>
+                        <ul>
+                            <li><span>01</span> Преодоление страха</li>
+                            <li><span>02</span> Защита беспомощных</li>
+                            <li><span>03</span> Красота суровой природы</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- СЕКЦИЯ 3: ВИДЕО -->
+    <section id="video" class="content-section hidden">
+        <div class="container">
+            <p class="section-subtitle">[Премьера]</p>
+            <h2 class="section-title">СМОТРЕТЬ ФИЛЬМ</h2>
+            <div class="video-wrapper">
+                <div class="video-container">
+                    <video controls>
+                        <source src="5018784631527.mp4" type="video/mp4">
+                        Ваш браузер не поддерживает видео.
+                    </video>
+                </div>
+            </div>
+            <div class="video-details">
+                <div class="detail-item">
+                    <span class="detail-label">Режиссёр</span>
+                    <span class="detail-value">Автор проекта</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Жанр</span>
+                    <span class="detail-value">Анимация / Драма</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Длительность</span>
+                    <span class="detail-value">~ 8 минут</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- СЕКЦИЯ 4: ГЕРОИ -->
+    <section id="characters" class="content-section hidden">
+        <div class="container">
+            <p class="section-subtitle">[Персонажи]</p>
+            <h2 class="section-title">ГЛАВНЫЕ ГЕРОИ</h2>
+            <div class="characters-grid">
+                <div class="character-card">
+                    <div class="char-img">
+                        <img src="r36XKxRSy2XQTBPfiu4ACXsINvo.jpg" alt="Пизл">
+                    </div>
+                    <h3>Пизл (Билби)</h3>
+                    <p>Маленький, но смелый. Несмотря на свой страх, он готов на всё, чтобы защитить того, кто слабее.</p>
+                </div>
+                <div class="character-card">
+                    <div class="char-img">
+                        <img src="1823089.jpg" alt="Птенец">
+                    </div>
+                    <h3>Птенец</h3>
+                    <p>Беспомощный и хрупкий. Символ всего чистого и доброго, что нуждается в защите в суровом мире.</p>
+                </div>
+                <div class="character-card">
+                    <div class="char-img">
+                        <img src="i.webp" alt="Пустыня">
+                    </div>
+                    <h3>Пустыня</h3>
+                    <p>Безжалостный антагонист. Она проверяет героев на прочность, но именно здесь рождается настоящая любовь.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- СЕКЦИЯ 5: ИГРА -->
+    <section id="game" class="content-section hidden">
+        <div class="container">
+            <p class="section-subtitle">[Интерактив]</p>
+            <h2 class="section-title">ЗАЩИТИ ПТЕНЦА</h2>
+            <div class="game-layout">
+                <div class="game-wrapper">
+                    <canvas id="gameCanvas" width="800" height="500"></canvas>
+                    <div id="gameOverlay" class="game-overlay">
+                        <h3 id="overlayTitle">ГОТОВ К ИГРЕ?</h3>
+                        <p id="overlayText">Помоги Пизлу защитить птенца. Двигай мышкой влево и вправо!</p>
+                        <button id="startGameBtn" class="btn-primary">Начать игру</button>
+                    </div>
+                </div>
+                <div class="game-instructions">
+                    <h3>Как играть:</h3>
+                    <ul>
+                        <li><span>1</span> Двигай мышью (или пальцем) влево и вправо.</li>
+                        <li><span>2</span> Лови падающие камни собой.</li>
+                        <li><span>3</span> Не дай птенцу получить урон!</li>
+                    </ul>
+                    <div class="game-score-board">
+                        <p>Твой рекорд: <span id="highScore">0</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- СЕКЦИЯ 6: МНЕНИЕ -->
+    <section id="feedback" class="content-section hidden">
+        <div class="container">
+            <p class="section-subtitle">[Обратная связь]</p>
+            <h2 class="section-title">ОСТАВИТЬ МНЕНИЕ</h2>
+            <form id="feedbackForm" class="feedback-form">
+                <div class="form-group">
+                    <label for="name">Ваше имя</label>
+                    <input type="text" id="name" required placeholder="Как к вам обращаться?">
+                </div>
+                <div class="form-group">
+                    <label for="message">Ваше мнение о сайте</label>
+                    <textarea id="message" rows="5" required placeholder="Что вам понравилось? Что можно улучшить?"></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Отправить</button>
+                <p id="formStatus" class="form-status"></p>
+            </form>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
