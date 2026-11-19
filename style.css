@@ -1,0 +1,789 @@
+/* =========================================
+   1. БАЗОВЫЕ НАСТРОЙКИ И ШРИФТЫ
+   ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #121212; /* Глубокий тёмный фон */
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* =========================================
+   2. НАВИГАЦИЯ (Оранжевая полоса сверху)
+   ========================================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: linear-gradient(90deg, rgba(255, 140, 0, 0.8) 0%, rgba(255, 69, 0, 0.8) 100%);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.logo {
+    font-weight: 900;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.navbar nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+.navbar nav a:hover {
+    color: #121212;
+    text-shadow: 0 0 5px #fff;
+}
+
+/* =========================================
+   3. ГЛАВНЫЙ ЭКРАН (Пустыня и Звёзды)
+   ========================================= */
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 100px 40px 40px;
+    /* Градиент: ночное небо переходит в песчаную пустыню */
+    background: linear-gradient(180deg, #0a0a0a 0%, #1a1510 50%, #2d1e0f 100%);
+    overflow: hidden;
+}
+
+/* Слой для звёзд (создадим через JS позже, но фон готовим сейчас) */
+.stars-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Контент поверх звёзд */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+}
+
+.subtitle {
+    color: #ff8c00;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+/* Огромный акцентный шрифт */
+.main-title {
+    font-size: 6rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    /* Неоновое оранжево-желтое свечение */
+    color: #fff;
+    text-shadow: 
+        0 0 10px rgba(255, 140, 0, 0.8),
+        0 0 20px rgba(255, 140, 0, 0.6),
+        0 0 40px rgba(255, 69, 0, 0.4);
+    letter-spacing: -2px;
+}
+
+.description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #cccccc;
+    margin-bottom: 35px;
+    max-width: 450px;
+}
+
+/* Кнопка */
+.btn-primary {
+    display: inline-block;
+    background: linear-gradient(90deg, #ff8c00, #ff4500);
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 35px;
+    border-radius: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 0 20px rgba(255, 140, 0, 0.4);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px rgba(255, 140, 0, 0.8);
+}
+
+/* Статистика (365 / 1) */
+.stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #ff8c00;
+    line-height: 1;
+    text-shadow: 0 0 15px rgba(255, 140, 0, 0.5);
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 5px;
+}
+
+/* =========================================
+   4. ПАРЯЩИЙ ОБЪЕКТ (Пока заглушка)
+   ========================================= */
+.floating-object {
+    position: absolute;
+    right: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+/* Свечение вокруг объекта */
+.object-glow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 140, 0, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: pulse 4s infinite alternate;
+}
+
+/* Заглушка фигуры (потом заменим на силуэт билби или артефакт) */
+.object-shape {
+    width: 120px;
+    height: 120px;
+    border: 3px solid #ff8c00;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(255, 140, 0, 0.8), inset 0 0 20px rgba(255, 140, 0, 0.4);
+    transform: rotate(45deg);
+    position: relative;
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Анимации */
+@keyframes pulse {
+    0% { transform: scale(0.9); opacity: 0.6; }
+    100% { transform: scale(1.1); opacity: 1; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(45deg); }
+    50% { transform: translateY(-20px) rotate(45deg); }
+}
+
+/* =========================================
+   5. УТИЛИТЫ
+   ========================================= */
+.hidden {
+    display: none !important;
+}
+
+/* =========================================
+   6. СЕКЦИЯ "ОБ АВТОРЕ"
+   ========================================= */
+.content-section {
+    min-height: 100vh;
+    padding: 120px 40px 60px; /* Отступ сверху, чтобы не перекрывала навигация */
+    background: linear-gradient(180deg, #121212 0%, #1a1510 100%);
+    position: relative;
+    z-index: 10;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-subtitle {
+    color: #ff8c00;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.section-title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 60px;
+    text-transform: uppercase;
+    line-height: 1.1;
+}
+
+.author-layout {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr; /* Левая часть шире */
+    gap: 60px;
+}
+
+/* Левая колонка с текстом */
+.author-text-main p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #b0b0b0;
+    margin-bottom: 25px;
+}
+
+.author-text-main .lead-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.4;
+    margin-bottom: 35px;
+    border-left: 4px solid #ff8c00;
+    padding-left: 20px;
+}
+
+/* Правая колонка (сайдбар) */
+.author-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.quote-box {
+    background: rgba(255, 140, 0, 0.05);
+    border: 1px solid rgba(255, 140, 0, 0.2);
+    padding: 30px;
+    border-radius: 15px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.quote-box p {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #ff8c00;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.quote-author {
+    display: block;
+    text-align: right;
+    color: #888;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.themes-list h3 {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.themes-list ul {
+    list-style: none;
+}
+
+.themes-list li {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 1.1rem;
+    color: #ccc;
+    transition: color 0.3s;
+}
+
+.themes-list li:hover {
+    color: #ff8c00;
+}
+
+.themes-list li span {
+    font-size: 0.8rem;
+    color: #ff8c00;
+    font-weight: 900;
+    margin-right: 15px;
+}
+
+/* Адаптив для мобильных (чтобы не сломалось на телефоне) */
+@media (max-width: 900px) {
+    .author-layout {
+        grid-template-columns: 1fr;
+    }
+    .section-title {
+        font-size: 2.5rem;
+    }
+}
+
+/* =========================================
+   ИСПРАВЛЕННЫЙ БЛОК ДЛЯ ВИДЕО
+   ========================================= */
+/* Блок с деталями под видео */
+.video-details {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 80px; /* Расстояние между колонками */
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.detail-label {
+    font-size: 0.8rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.detail-value {
+    font-size: 1.1rem;
+    color: #ff8c00;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(255, 140, 0, 0.3); /* Легкое свечение */
+}
+
+/* Чтобы видео внутри контейнера не вылезало за края */
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* Пропорции 16:9 */
+    background: #000;
+}
+
+.video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Видео будет вписываться, не обрезаясь */
+}
+
+/* =========================================
+   8. СЕКЦИЯ "ИГРА"
+   ========================================= */
+.game-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.game-wrapper {
+    position: relative;
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 2px solid rgba(255, 140, 0, 0.3);
+    box-shadow: 0 0 40px rgba(255, 140, 0, 0.15);
+    background: #0a0a0a;
+}
+
+#gameCanvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    cursor: none; /* Прячем стандартный курсор мыши */
+}
+
+/* Экран старта/проигрыша */
+.game-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    z-index: 10;
+    transition: opacity 0.3s;
+}
+
+.game-overlay.hidden-overlay {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.game-overlay h3 {
+    font-size: 2.5rem;
+    color: #ff8c00;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    text-shadow: 0 0 20px rgba(255, 140, 0, 0.6);
+}
+
+.game-overlay p {
+    color: #ccc;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+/* Инструкция */
+.game-instructions h3 {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.game-instructions ul {
+    list-style: none;
+    margin-bottom: 40px;
+}
+
+.game-instructions li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    color: #b0b0b0;
+    line-height: 1.5;
+}
+
+.game-instructions li span {
+    color: #ff8c00;
+    font-weight: 900;
+    margin-right: 15px;
+    font-size: 1.2rem;
+}
+
+.game-score-board {
+    background: rgba(255, 140, 0, 0.1);
+    border: 1px solid rgba(255, 140, 0, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.game-score-board span {
+    color: #ff8c00;
+    font-weight: 900;
+    font-size: 1.5rem;
+}
+
+/* Адаптив */
+@media (max-width: 900px) {
+    .game-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================
+   9. ЗВЁЗДЫ И АНИМАЦИИ ПЕРЕХОДОВ
+   ========================================= */
+
+/* Стили для созданных звёзд */
+.star {
+    position: absolute;
+    background-color: #fff;
+    border-radius: 50%;
+    opacity: 0;
+    animation: twinkle linear infinite;
+    pointer-events: none; /* Чтобы звёзды не мешали кликам */
+}
+
+/* Анимация мерцания */
+@keyframes twinkle {
+    0%, 100% { opacity: 0.1; transform: scale(0.8); }
+    50% { opacity: 0.8; transform: scale(1.2); box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
+}
+
+/* Плавное появление секций (вместо резкого display: none) */
+.content-section {
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(20px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+/* =========================================
+   10. АДАПТИВ ДЛЯ ГЛАВНОГО ЭКРАНА
+   ========================================= */
+@media (max-width: 1024px) {
+    .main-title {
+        font-size: 4.5rem;
+    }
+    .floating-object {
+        width: 200px;
+        height: 200px;
+        right: 5%;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .navbar nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    .navbar nav a {
+        margin-left: 0;
+        font-size: 0.8rem;
+    }
+    
+    .hero-section {
+        padding: 150px 20px 40px; /* Больше отступа сверху из-за меню */
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .hero-content {
+        max-width: 100%;
+    }
+
+    .main-title {
+        font-size: 3.5rem;
+    }
+    
+    .description {
+        margin: 0 auto 30px;
+    }
+
+    .stats {
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    /* Прячем парящий объект на телефонах, чтобы не мешал тексту */
+    .floating-object {
+        display: none;
+    }
+    
+    .author-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .video-details {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+/* =========================================
+   11. СЕКЦИЯ "ГЕРОИ"
+   ========================================= */
+.characters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.character-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 140, 0, 0.2);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    /* Вот главный фикс: карточка не даст картинке вылезти за свои края */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; 
+}
+
+.character-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 140, 0, 0.2);
+}
+
+/* Домик для картинки */
+.char-img {
+    width: 100%;
+    height: 220px; /* Задаем жесткую высоту */
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden; /* Обрезаем всё, что не влезло */
+    background: #1a1a1a;
+    position: relative; /* Чтобы картинка не убегала */
+}
+
+/* Сама картинка */
+.char-img img {
+    position: absolute; /* Сажаем картинку на строгое место */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Заполняет блок без искажений */
+    transition: transform 0.5s ease;
+}
+
+.character-card:hover .char-img img {
+    transform: scale(1.05); /* Легкий зум при наведении */
+}
+
+/* Текст под картинкой */
+.character-card h3 {
+    color: #fff;
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    position: relative; /* Текст теперь поверх картинок не будет */
+    z-index: 2;
+}
+
+.character-card p {
+    color: #b0b0b0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    position: relative;
+    z-index: 2;
+}
+
+/* =========================================
+   12. СЕКЦИЯ "МНЕНИЕ" (ФОРМА)
+   ========================================= */
+.feedback-form {
+    max-width: 600px;
+    margin: 40px auto;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 140, 0, 0.2);
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    color: #ff8c00;
+    margin-bottom: 8px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #ff8c00;
+    box-shadow: 0 0 15px rgba(255, 140, 0, 0.3);
+}
+
+.form-status {
+    margin-top: 15px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.navbar nav a.active {
+    color: #121212; 
+    background: rgba(255, 255, 255, 0.2);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+/* Фикс для отображения игры и картинок */
+#gameCanvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: #000;
+    border-radius: 20px;
+    cursor: crosshair;
+}
+
+.char-img img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Активная вкладка */
+.navbar nav a.active {
+    color: #121212; 
+    background: rgba(255, 255, 255, 0.4);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
